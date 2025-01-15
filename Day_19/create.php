@@ -6,13 +6,16 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $rec_file = $_FILES['upload_image'];
 
+// Adding code to handle file
     $image_name = $rec_file['name'];
     $image_type = $rec_file['type'];
     $image_tmp_name = $rec_file['tmp_name'];
 
+   $name_changer =  uniqid(). ".png";
+
     if(!empty($image_name)){
         $loc = "../profile_pic/";
-        move_uploaded_file($image_tmp_name, $loc . $image_name);
+        move_uploaded_file($image_tmp_name, $loc . $name_changer);
     }
     
     else{
@@ -26,7 +29,7 @@ if (isset($_POST['submit'])) {
             die("Database connection failed: " . mysqli_connect_error());
         }
 
-        $query = "INSERT INTO user_info (profile_pic, username, email, password) VALUES ('$image_name', '$username', '$email', '$password')";
+        $query = "INSERT INTO user_info (profile_pic, username, email, password) VALUES ('$name_changer', '$username', '$email', '$password')";
         
         $result = mysqli_query($connection, $query);
 

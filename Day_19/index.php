@@ -75,11 +75,13 @@
                 <td><?php echo "$username"; ?></td>
                 <td><?php echo "$email"; ?></td>
                 <td><?php echo "$password"; ?></td>
-                <td><a href="edit.php?edit_id=<?php echo $id; ?>">Edit</a>||<a href="delete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="edit.php?edit_id=<?php echo $id; ?>">Edit</a> || <a onclick="return confirm('Are you sure?')" href="delete.php?id=<?php echo $id; ?>&profile_pic=<?php echo $profile_img; ?>" class="btn btn-danger btn-sm">Delete</a></td>
+
             </tr>
         </tbody>
 
         <?php
+        
             }
         ?>
 
