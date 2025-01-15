@@ -8,16 +8,17 @@
 </head>
 <body>
     <br>
-    <form action="create.php" method='post'>
+    <form action="create.php" method='post' enctype = "multipart/form-data">
         <input type="text" name='name' placeholder="Enter your name">
         <input type="email" name='email' placeholder="Enter your email">
         <input type="password" name='password' placeholder="Enter your password">
+        <input type="file" name='upload_image' value="Upload">
         <input type="submit" name='submit' value='Submit'>
     </form>
     <br>
+    
     <?php
         $connection = mysqli_connect('localhost', 'root', '', 'users');
-        
         if (!$connection) {
             die("Database connection failed: " . mysqli_connect_error());
         }
@@ -50,6 +51,7 @@
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
+                <th>Profile</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Password</th>
@@ -60,6 +62,7 @@
         <?php    
             while($row = mysqli_fetch_assoc($result)) {
                 $id = $row['id'];
+                $profile_img = $row['profile_pic'];
                 $username = $row['username'];
                 $email = $row['email'];
                 $password = $row['password'];
@@ -68,6 +71,7 @@
         <tbody>
             <tr>
                 <td><?php echo "$id"; ?></td>
+                <td><img width="50px" src="../profile_pic/<?php echo $profile_img  ?>"></td>
                 <td><?php echo "$username"; ?></td>
                 <td><?php echo "$email"; ?></td>
                 <td><?php echo "$password"; ?></td>

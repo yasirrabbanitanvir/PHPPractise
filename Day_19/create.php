@@ -4,21 +4,30 @@ if (isset($_POST['submit'])) {
     $username = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $rec_file = $_FILES['upload_image'];
+
+    $image_name = $rec_file['name'];
+    $image_type = $rec_file['type'];
+    $image_tmp_name = $rec_file['tmp_name'];
+
+    if(!empty($image_name)){
+        $loc = "../profile_pic/";
+        move_uploaded_file($image_tmp_name, $loc . $image_name);
+    }
+    
+    else{
+        echo "Your file is emty.";
+    }
 
     if ($username && $email && $password) {
         $connection = mysqli_connect('localhost', 'root', '', 'users');
-
-        // if($connection){
-        //     echo "Database Connected";
-        // } else {
-        //     echo "Not Connected" .mysqli_error();
-        // }
 
         if (!$connection) {
             die("Database connection failed: " . mysqli_connect_error());
         }
 
-        $query = "INSERT INTO user_info (username, email, password) VALUES ('$username', '$email', '$password')";
+        $query = "INSERT INTO user_info (profile_pic, username, email, password) VALUES ('$image_name', '$username', '$email', '$password')";
+        
         $result = mysqli_query($connection, $query);
 
         if ($result) {
