@@ -1,13 +1,13 @@
 <?php
 
-if (isset($_GET['bt'])){
+if (isset($_GET['bt'])) {
 
     $x = $_GET['a'];
     $y = $_GET['b'];
     $z = $x + $y;
 
-    echo"Sub of Two Numbers: ".$z;
-    
+    echo "Sub of Two Numbers: " . $z;
+
 }
 
 ?>

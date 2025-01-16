@@ -26,24 +26,20 @@ $name = $pro['name'];
 $type = $pro['type'];
 $tmp_name = $pro['tmp_name'];
 
-if(!empty($name)){
+if (!empty($name)) {
 
-    $loc = "upload/"; 
+    $loc = "upload/";
 
     // move_uploaded_file($tmp_name, $loc. "test.jpg");
 
-   if(move_uploaded_file($tmp_name, $loc. $name)) {
+    if (move_uploaded_file($tmp_name, $loc . $name)) {
         echo "file uploaded";
-        $path = $loc. $name;
+        $path = $loc . $name;
         echo "<img src='$path'; width='200' height='200'>";
-   }
-
-    else{
+    } else {
         echo "file not uploaded";
     }
-}
-
-else{
+} else {
 
     echo "File not found";
 }

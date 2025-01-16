@@ -1,8 +1,8 @@
 <?php
 
-    if(isset($_REQUEST['wrongPass'])){
-        echo $_REQUEST['wrongPass'];
-    }
+if (isset($_REQUEST['wrongPass'])) {
+    echo $_REQUEST['wrongPass'];
+}
 
 ?>
 

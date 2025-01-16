@@ -6,19 +6,17 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $rec_file = $_FILES['upload_image'];
 
-// Adding code to handle file
+    // Adding code to handle file
     $image_name = $rec_file['name'];
     $image_type = $rec_file['type'];
     $image_tmp_name = $rec_file['tmp_name'];
 
-   $name_changer =  uniqid(). ".png";
+    $name_changer = uniqid() . ".png";
 
-    if(!empty($image_name)){
+    if (!empty($image_name)) {
         $loc = "../profile_pic/";
         move_uploaded_file($image_tmp_name, $loc . $name_changer);
-    }
-    
-    else{
+    } else {
         echo "Your file is emty.";
     }
 
@@ -30,20 +28,16 @@ if (isset($_POST['submit'])) {
         }
 
         $query = "INSERT INTO user_info (profile_pic, username, email, password) VALUES ('$name_changer', '$username', '$email', '$password')";
-        
+
         $result = mysqli_query($connection, $query);
 
         if ($result) {
             header("location: index.php?inserted");
-        }
-        
-        else {
+        } else {
             echo "Insert failed: " . mysqli_error($connection);
         }
-        
-    } 
-    
-    else {
+
+    } else {
         echo "No field can be blank";
     }
 }

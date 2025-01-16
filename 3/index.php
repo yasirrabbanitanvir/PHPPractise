@@ -5,7 +5,7 @@ if (isset($_GET['n'])) {
     $x = $_GET['n'];
     for ($i = 0; $i < count($x); ++$i) {
 
-        $Mul *= $x[$i]; 
+        $Mul *= $x[$i];
     }
 }
 
@@ -13,12 +13,12 @@ if (isset($_GET['n'])) {
 
 <form action="" method="GET">
 
-<input type="text" name='n[]'>
-<input type="text" name='n[]'>
-<input type="text" name='n[]'>
-<input type="text" name='n[]'>
-<input type="submit" name='btn' value='ADD' >
+    <input type="text" name='n[]'>
+    <input type="text" name='n[]'>
+    <input type="text" name='n[]'>
+    <input type="text" name='n[]'>
+    <input type="submit" name='btn' value='ADD'>
 
-<p>The total is: </p> <?php echo $Mul;  ?> 
+    <p>The total is: </p> <?php echo $Mul; ?>
 
 </form>
