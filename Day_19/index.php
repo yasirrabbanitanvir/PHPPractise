@@ -14,6 +14,16 @@
         <input type="text" name='name' placeholder="Enter your name">
         <input type="email" name='email' placeholder="Enter your email">
         <input type="password" name='password' placeholder="Enter your password">
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female
+
+        <select name="country">
+            <option value="">Select your country</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="USA">USA</option>
+
+        </select>
+         
         <input type="file" name='upload_image' value="Upload">
         <input type="submit" name='submit' value='Submit'>
     </form>
@@ -108,6 +118,8 @@
                     <th>Password</th>
                     <th>Action</th>
                     <th><input type="submit" class="btn btn-success" name="delete_m_data" value="Multiple_Delete"></th>
+                    <th>Gender</th>
+                    <th>Country</th>
                 </tr>
             </thead>
 
@@ -119,6 +131,8 @@
                 $username = $row['username'];
                 $email = $row['email'];
                 $password = $row['password'];
+                $gender = $row['gender'];
+                $country = $row['country'];
                 $serial_number++;
                 ?>
 
@@ -137,6 +151,8 @@
                         <td>
                             <center><input type="checkbox" name="check_data[]" value="<?php echo "$id"; ?>"></center>
                         </td>
+                        <td><?php echo "$gender"; ?></td>
+                        <td><?php echo "$country"; ?></td>
 
                     </tr>
                 </tbody>
